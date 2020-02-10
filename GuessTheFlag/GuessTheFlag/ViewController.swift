@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         adjustFlagsAppearence()
         askQuestion()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show Score", style: .plain, target: self, action: #selector(showScore))
+        
     }
     
     func initCountriesArray(){
@@ -86,6 +88,12 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: title, message: alertBody, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion)) //here we path only the name of the function to run when btn pressed , don't call the method askQuestion() bec if we do this it means call the method askQuestion now to get the name of the method to run when btn pressed
         present(alertController, animated: true)
+    }
+    
+    @objc func showScore (){
+        let scoreAlert = UIAlertController(title: "Your Score", message: "Your Current Score \(score)", preferredStyle: .alert)
+        scoreAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(scoreAlert,animated: true)
     }
     
 
